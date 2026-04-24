@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b2ugcdci7akp4"]
+
+[ext_resource type="Script" uid="uid://ce4w5qgfo1njs" path="res://scenes/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cxhh0ok2pycx6" path="res://scenes/background.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dcprlbeik4h5b" path="res://scenes/player.tscn" id="3_lnu2h"]
+
+[node name="Game" type="Node2D" unique_id=1701850021]
+script = ExtResource("1_yqjtg")
+
+[node name="Background" parent="." unique_id=1085075489 instance=ExtResource("2_lnu2h")]
+
+[node name="Player" parent="." unique_id=210483437 instance=ExtResource("3_lnu2h")]
+position = Vector2(241, 619)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=129895481]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
