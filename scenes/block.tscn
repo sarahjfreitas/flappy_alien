@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://doe6cljs0vaj6"]
+
+[ext_resource type="Texture2D" uid="uid://b3pbcx4uhrktn" path="res://assets/sprites/bricks_brown.png" id="1_8r6n6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgrg5"]
+size = Vector2(128, 130)
+
+[node name="Block" type="StaticBody2D" unique_id=1573627400]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=785525794]
+texture = ExtResource("1_8r6n6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636207262]
+shape = SubResource("RectangleShape2D_cgrg5")
