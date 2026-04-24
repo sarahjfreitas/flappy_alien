@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b2ugcdci7akp4"]
 
+[ext_resource type="Script" uid="uid://bkjp6l6xs7dkx" path="res://scenes/ui.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://ce4w5qgfo1njs" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cxhh0ok2pycx6" path="res://scenes/background.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dcprlbeik4h5b" path="res://scenes/player.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://g3u06myothej" path="res://assets/sprites/hud_heart.png" id="4_lbhrr"]
 
 [node name="Game" type="Node2D" unique_id=1701850021]
 script = ExtResource("1_yqjtg")
@@ -11,9 +13,56 @@ script = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." unique_id=210483437 instance=ExtResource("3_lnu2h")]
 position = Vector2(241, 619)
+wall_min_slide_angle = 0.0
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=129895481]
 wait_time = 3.0
 autostart = true
 
+[node name="UI" type="Control" parent="." unique_id=1902590354]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+mouse_filter = 1
+script = ExtResource("1_lnu2h")
+
+[node name="HealthBar" type="HBoxContainer" parent="UI" unique_id=1705125212]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.00078125
+anchor_right = 1.0
+anchor_bottom = 0.00078125
+offset_bottom = 64.0
+grow_horizontal = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Life1" type="TextureRect" parent="UI/HealthBar" unique_id=453058897]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_lbhrr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Life2" type="TextureRect" parent="UI/HealthBar" unique_id=1479119872]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_lbhrr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Life3" type="TextureRect" parent="UI/HealthBar" unique_id=1136848081]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_lbhrr")
+expand_mode = 1
+stretch_mode = 4
+
+[connection signal="hit" from="Player" to="UI" method="_on_player_hit"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

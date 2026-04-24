@@ -47,19 +47,25 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
-radius = 43.0
-height = 104.0
+radius = 58.0
+height = 156.0
 
 [node name="Player" type="CharacterBody2D" unique_id=210483437]
+motion_mode = 1
 script = ExtResource("1_tuyoq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=128141847]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
 animation = &"up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=94224803]
-position = Vector2(0, 15)
+position = Vector2(0, 28)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1878416795]
 stream = ExtResource("7_fjrip")
+
+[node name="ImortalTimer" type="Timer" parent="." unique_id=384679605]
+unique_name_in_owner = true
+one_shot = true

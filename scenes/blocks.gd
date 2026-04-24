@@ -4,10 +4,10 @@ extends Node2D
 
 var block_scene :PackedScene = preload("res://scenes/block.tscn")
 var tile_size := 128.0
-const TOP_BLOCKS_MIN := 2 
-const TOP_BLOCKS_MAX := 8 
-const GAP_MIN := 2
-const GAP_MAX := 4
+const TOP_BLOCKS_MIN := 0
+const TOP_BLOCKS_MAX := 6
+const GAP_MIN := 3
+const GAP_MAX := 5
 
 func _ready() -> void:
 	var viewport_size := get_viewport_rect().size

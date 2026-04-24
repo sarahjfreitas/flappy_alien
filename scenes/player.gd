@@ -3,15 +3,18 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
-
 var gravity := 200.0
 var current_jump_speed := 0.0
 var initial_x := 200.0
 var horizontal_speed := 100.0
+var health : int
+
+signal hit(health : int)
 	
 func _ready() -> void:
 	animated_sprite_2d.play("idle")
 	position.x = initial_x
+	health = 3
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed() and (event is InputEventMouseButton or event is InputEventScreenTouch):
@@ -29,6 +32,11 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.y = (current_jump_speed * -1) + gravity
 	move_and_slide()
+	
+	if get_slide_collision_count() > 0 and $ImortalTimer.is_stopped():
+		health -= 1
+		hit.emit(health)
+		$ImortalTimer.start()
 
 func jump():
 	animated_sprite_2d.play("up")
