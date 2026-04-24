@@ -1,0 +1,23 @@
+[gd_scene format=4 uid="uid://cxhh0ok2pycx6"]
+
+[ext_resource type="TileSet" uid="uid://bkgyr7r0o3h1b" path="res://assets/tilesets/background.tres" id="1_bkp1e"]
+[ext_resource type="Script" uid="uid://dejkrnqbrj0mu" path="res://scenes/background.gd" id="1_y0upk"]
+
+[node name="Background" type="Node2D" unique_id=1085075489]
+script = ExtResource("1_y0upk")
+
+[node name="Sky" type="Parallax2D" parent="." unique_id=2073404776]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(1024, 0)
+autoscroll = Vector2(200, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Sky" unique_id=554214653]
+tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAABAAAAAwABAAAAAAACAAAAAwAAAAAAAAAAAAEAAwAAAAEAAAABAAEAAwABAAEAAAACAAEAAwAAAAEAAAADAAAAAwABAAAAAAADAAEAAwABAAEAAAA=")
+tile_set = ExtResource("1_bkp1e")
+
+[node name="Ground" type="Parallax2D" parent="." unique_id=3465055]
+repeat_size = Vector2(1024, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground" unique_id=1682191175]
+tile_map_data = PackedByteArray("AAAAAAIAAwAAAAQAAAAAAAMAAwAAAAUAAAABAAIAAwABAAQAAAABAAMAAwABAAUAAAACAAIAAwAEAAIAAAACAAMAAwAEAAMAAAADAAIAAwAFAAIAAAADAAMAAwAFAAMAAAAAAAQAAwACAAYAAAABAAQAAwADAAYAAAACAAQAAwACAAYAAAADAAQAAwADAAYAAAA=")
+tile_set = ExtResource("1_bkp1e")
