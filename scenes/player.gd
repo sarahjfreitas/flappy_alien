@@ -10,6 +10,7 @@ var horizontal_speed := 100.0
 var health : int
 
 signal hit(health : int)
+signal dead
 	
 func _ready() -> void:
 	animated_sprite_2d.play("idle")
@@ -17,10 +18,18 @@ func _ready() -> void:
 	health = 3
 
 func _unhandled_input(event: InputEvent) -> void:
+	if health <= 0:
+		return
+		
 	if event.is_pressed() and (event is InputEventMouseButton or event is InputEventScreenTouch):
 		jump()
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		velocity = Vector2.ZERO
+		position.x = initial_x
+		return
+		
 	if current_jump_speed > 0:
 		current_jump_speed = max(0, current_jump_speed - 30)
 		
@@ -37,6 +46,9 @@ func _physics_process(delta: float) -> void:
 		health -= 1
 		hit.emit(health)
 		$ImortalTimer.start()
+		
+		if (health <= 0):
+			dead.emit()
 
 func jump():
 	animated_sprite_2d.play("up")

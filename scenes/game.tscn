@@ -64,5 +64,6 @@ texture = ExtResource("4_lbhrr")
 expand_mode = 1
 stretch_mode = 4
 
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="hit" from="Player" to="UI" method="_on_player_hit"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
