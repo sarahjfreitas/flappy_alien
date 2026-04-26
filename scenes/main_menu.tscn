@@ -1,0 +1,78 @@
+[gd_scene format=4 uid="uid://b8i1nbyiddi4n"]
+
+[ext_resource type="Theme" uid="uid://p30cie1vyc3j" path="res://scenes/theme.tres" id="1_ekxnf"]
+[ext_resource type="TileSet" uid="uid://bkgyr7r0o3h1b" path="res://assets/tilesets/background.tres" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://cmmmtqtabdaad" path="res://scenes/main_menu.gd" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://ictqltaet8nt" path="res://assets/ui/icons sound on.png" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cdmk33jlajt05" path="res://assets/ui/icons sound off.png" id="4_wu84c"]
+[ext_resource type="AudioStream" uid="uid://corms07ahpva" path="res://assets/sounds/menu_background.ogg" id="6_rtw2f"]
+
+[node name="MainMenu" type="Control" unique_id=1197704631]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ekxnf")
+script = ExtResource("2_bqqt6")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1408632772]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAIAAAABAAAAAwAEAAIAAAACAAAAAwAFAAIAAAAAAAEAAwAFAAMAAAABAAEAAwAEAAMAAAACAAEAAwAFAAMAAAAAAAIAAwADAAYAAAABAAIAAwACAAYAAAACAAIAAwADAAYAAAABAAMAAwACAAcAAAACAAMAAwADAAcAAAAAAAMAAwADAAcAAAAAAAQAAwACAAYAAAABAAQAAwACAAYAAAACAAQAAwADAAYAAAA=")
+tile_set = ExtResource("1_l6cm7")
+
+[node name="MuteButton" type="TextureButton" parent="." unique_id=758121438]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 20.0
+offset_right = 692.0
+offset_bottom = 105.78313
+texture_normal = ExtResource("3_8ln24")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="UnmuteButton" type="TextureButton" parent="." unique_id=388317695]
+visible = false
+layout_mode = 0
+offset_left = 612.0
+offset_top = 20.0
+offset_right = 692.0
+offset_bottom = 105.78313
+texture_normal = ExtResource("4_wu84c")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=280542102]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewButton" type="Button" parent="VBoxContainer" unique_id=787526922]
+layout_mode = 2
+text = "New Game"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=295191542]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=1647720218]
+layout_mode = 2
+text = "Exit"
+
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="." unique_id=456393079]
+stream = ExtResource("6_rtw2f")
+autoplay = true
+
+[connection signal="pressed" from="MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="UnmuteButton" to="." method="_on_unmute_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/NewButton" to="." method="_on_new_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

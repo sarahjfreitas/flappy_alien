@@ -3,6 +3,13 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 var blocks_scene : PackedScene = preload("res://scenes/blocks.tscn")
 
+func _process(delta: float) -> void:
+	if game_manager.mute and $BackgroundAudio.playing:
+		$BackgroundAudio.stop()
+		
+	if !game_manager.mute and !$BackgroundAudio.playing:
+		$BackgroundAudio.play()
+
 func _on_spawn_timer_timeout() -> void:
 	var new_blocks = blocks_scene.instantiate()
 	new_blocks.add_to_group("blocks")
@@ -11,6 +18,7 @@ func _on_spawn_timer_timeout() -> void:
 func _on_player_dead() -> void:
 	$SpawnTimer.stop()
 	$Background.scroll_speed = 0.0
+	game_manager.mute = true
 	
 	for blocks in get_tree().get_nodes_in_group("blocks"):
 		blocks.blocks_speed = 0.0

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="flappy_alien"
-run/main_scene="uid://b2ugcdci7akp4"
+run/main_scene="uid://b8i1nbyiddi4n"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+game_manager="*uid://5tnybm5ncph6"
 
 [display]
 

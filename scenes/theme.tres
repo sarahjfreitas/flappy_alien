@@ -1,0 +1,34 @@
+[gd_resource type="Theme" format=3 uid="uid://p30cie1vyc3j"]
+
+[ext_resource type="FontFile" uid="uid://dc6gm4kdsawga" path="res://assets/ui/Kaph-Regular.ttf" id="1_jm5n4"]
+[ext_resource type="Texture2D" uid="uid://bnvi7hooy41cl" path="res://assets/ui/button wide hover.png" id="2_4gw00"]
+[ext_resource type="Texture2D" uid="uid://0311dsecy4tl" path="res://assets/ui/button wide idle.png" id="3_7gp8n"]
+[ext_resource type="Texture2D" uid="uid://w1goackgfd1u" path="res://assets/ui/button wide clicked.png" id="4_h6lw8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_674b1"]
+content_margin_left = 60.0
+content_margin_top = 30.0
+content_margin_right = 60.0
+content_margin_bottom = 30.0
+texture = ExtResource("2_4gw00")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gw00"]
+content_margin_left = 60.0
+content_margin_top = 30.0
+content_margin_right = 60.0
+content_margin_bottom = 30.0
+texture = ExtResource("3_7gp8n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5pw2"]
+content_margin_left = 60.0
+content_margin_top = 30.0
+content_margin_right = 60.0
+content_margin_bottom = 30.0
+texture = ExtResource("4_h6lw8")
+
+[resource]
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_jm5n4")
+Button/styles/hover = SubResource("StyleBoxTexture_674b1")
+Button/styles/normal = SubResource("StyleBoxTexture_4gw00")
+Button/styles/pressed = SubResource("StyleBoxTexture_f5pw2")
